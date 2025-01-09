@@ -34,7 +34,7 @@ func (ash *ATSessionHandler) ServeHTTP(w http.ResponseWriter, req *http.Request)
 
 	rp := ash.GetRequestParser()
 	cfg := ash.GetConfig()
-	cfg.SessionId, err = rp.GetSessionId(req)
+	cfg.SessionId, err = rp.GetSessionId(req.Context(), req)
 	if err != nil {
 		logg.ErrorCtxf(rqs.Ctx, "", "header processing error", err)
 		ash.WriteError(w, 400, err)

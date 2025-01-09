@@ -1,7 +1,7 @@
 git.defalsify.org/vise.git v0.2.3-0.20250103172917-3e190a44568d h1:bPAOVZOX4frSGhfOdcj7kc555f8dc9DmMd2YAyC2AMw=
 git.defalsify.org/vise.git v0.2.3-0.20250103172917-3e190a44568d/go.mod h1:jyBMe1qTYUz3mmuoC9JQ/TvFeW0vTanCUcPu3H8p4Ck=
-git.grassecon.net/urdt/ussd v0.8.0-beta.5.0.20250105111758-6789c4f550fa h1:aJaDujoO/zIci2ORGPYwo/Q9wM4tMWTSyRy5BVutm0g=
-git.grassecon.net/urdt/ussd v0.8.0-beta.5.0.20250105111758-6789c4f550fa/go.mod h1:Xct45L7FUE4pYtLN4gmhkMCoafUNpcOJ7horP9kPDAc=
+git.grassecon.net/urdt/ussd v0.8.0-beta.11.0.20250109134950-b9712098eff5 h1:xDmrSUzN2IdfHt4C0gKGidACqI7t7+bKakiS+Qrd+tA=
+git.grassecon.net/urdt/ussd v0.8.0-beta.11.0.20250109134950-b9712098eff5/go.mod h1:Xct45L7FUE4pYtLN4gmhkMCoafUNpcOJ7horP9kPDAc=
 github.com/alecthomas/assert/v2 v2.2.2 h1:Z/iVC0xZfWTaFNE6bA3z07T86hd45Xe2eLt6WVy2bbk=
 github.com/alecthomas/assert/v2 v2.2.2/go.mod h1:pXcQ2Asjp247dahGEmsZ6ru0UVwnkhktn7S0bBDLxvQ=
 github.com/alecthomas/participle/v2 v2.0.0 h1:Fgrq+MbuSsJwIkw3fEj9h75vDP0Er5JzepJ0/HNHv0g=

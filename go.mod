@@ -4,7 +4,7 @@ go 1.23.0
 
 require (
 	git.defalsify.org/vise.git v0.2.3-0.20250103172917-3e190a44568d
-	git.grassecon.net/urdt/ussd v0.8.0-beta.5.0.20250105111758-6789c4f550fa
+	git.grassecon.net/urdt/ussd v0.8.0-beta.11.0.20250109134950-b9712098eff5
 )
 
 require (

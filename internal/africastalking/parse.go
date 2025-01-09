@@ -18,7 +18,7 @@ type ATRequestParser struct {
 	Context context.Context
 }
 
-func (arp *ATRequestParser) GetSessionId(rq any) (string, error) {
+func (arp *ATRequestParser) GetSessionId(ctx context.Context, rq any) (string, error) {
 	rqv, ok := rq.(*http.Request)
 	if !ok {
 		logg.Warnf("got an invalid request", "req", rq)

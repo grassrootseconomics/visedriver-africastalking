@@ -11,8 +11,9 @@ import (
 	"testing"
 
 	"git.defalsify.org/vise.git/engine"
-	"git.grassecon.net/urdt/ussd/internal/handlers"
-	"git.grassecon.net/urdt/ussd/internal/testutil/mocks/httpmocks"
+	"git.grassecon.net/urdt/ussd/request"
+	verrors "git.grassecon.net/urdt/ussd/errors"
+	"git.grassecon.net/urdt/ussd/testutil/mocks/httpmocks"
 )
 
 func TestNewATSessionHandler(t *testing.T) {
@@ -49,15 +50,15 @@ func TestATSessionHandler_ServeHTTP(t *testing.T) {
 					parts := strings.Split(text, "*")
 					return []byte(parts[len(parts)-1]), nil
 				}
-				mh.ProcessFunc = func(rqs handlers.RequestSession) (handlers.RequestSession, error) {
+				mh.ProcessFunc = func(rqs request.RequestSession) (request.RequestSession, error) {
 					rqs.Continue = true
 					rqs.Engine = me
 					return rqs, nil
 				}
 				mh.GetConfigFunc = func() engine.Config { return engine.Config{} }
-				mh.GetRequestParserFunc = func() handlers.RequestParser { return mrp }
-				mh.OutputFunc = func(rs handlers.RequestSession) (handlers.RequestSession, error) { return rs, nil }
-				mh.ResetFunc = func(rs handlers.RequestSession) (handlers.RequestSession, error) { return rs, nil }
+				mh.GetRequestParserFunc = func() request.RequestParser { return mrp }
+				mh.OutputFunc = func(rs request.RequestSession) (request.RequestSession, error) { return rs, nil }
+				mh.ResetFunc = func(rs request.RequestSession) (request.RequestSession, error) { return rs, nil }
 				me.FlushFunc = func(context.Context, io.Writer) (int, error) { return 0, nil }
 			},
 			formData: url.Values{
@@ -74,7 +75,7 @@ func TestATSessionHandler_ServeHTTP(t *testing.T) {
 					return "", errors.New("no phone number found")
 				}
 				mh.GetConfigFunc = func() engine.Config { return engine.Config{} }
-				mh.GetRequestParserFunc = func() handlers.RequestParser { return mrp }
+				mh.GetRequestParserFunc = func() request.RequestParser { return mrp }
 			},
 			formData: url.Values{
 				"text": []string{"1*2*3"},
@@ -93,7 +94,7 @@ func TestATSessionHandler_ServeHTTP(t *testing.T) {
 					return nil, errors.New("no input found")
 				}
 				mh.GetConfigFunc = func() engine.Config { return engine.Config{} }
-				mh.GetRequestParserFunc = func() handlers.RequestParser { return mrp }
+				mh.GetRequestParserFunc = func() request.RequestParser { return mrp }
 			},
 			formData: url.Values{
 				"phoneNumber": []string{"+1234567890"},
@@ -114,11 +115,11 @@ func TestATSessionHandler_ServeHTTP(t *testing.T) {
 					parts := strings.Split(text, "*")
 					return []byte(parts[len(parts)-1]), nil
 				}
-				mh.ProcessFunc = func(rqs handlers.RequestSession) (handlers.RequestSession, error) {
-					return rqs, handlers.ErrStorage
+				mh.ProcessFunc = func(rqs request.RequestSession) (request.RequestSession, error) {
+					return rqs, verrors.ErrStorage
 				}
 				mh.GetConfigFunc = func() engine.Config { return engine.Config{} }
-				mh.GetRequestParserFunc = func() handlers.RequestParser { return mrp }
+				mh.GetRequestParserFunc = func() request.RequestParser { return mrp }
 			},
 			formData: url.Values{
 				"phoneNumber": []string{"+1234567890"},
@@ -158,13 +159,13 @@ func TestATSessionHandler_ServeHTTP(t *testing.T) {
 func TestATSessionHandler_Output(t *testing.T) {
 	tests := []struct {
 		name           string
-		input          handlers.RequestSession
+		input          request.RequestSession
 		expectedPrefix string
 		expectedError  bool
 	}{
 		{
 			name: "Continue true",
-			input: handlers.RequestSession{
+			input: request.RequestSession{
 				Continue: true,
 				Engine: &httpmocks.MockEngine{
 					FlushFunc: func(context.Context, io.Writer) (int, error) {
@@ -178,7 +179,7 @@ func TestATSessionHandler_Output(t *testing.T) {
 		},
 		{
 			name: "Continue false",
-			input: handlers.RequestSession{
+			input: request.RequestSession{
 				Continue: false,
 				Engine: &httpmocks.MockEngine{
 					FlushFunc: func(context.Context, io.Writer) (int, error) {
@@ -192,7 +193,7 @@ func TestATSessionHandler_Output(t *testing.T) {
 		},
 		{
 			name: "Flush error",
-			input: handlers.RequestSession{
+			input: request.RequestSession{
 				Continue: true,
 				Engine: &httpmocks.MockEngine{
 					FlushFunc: func(context.Context, io.Writer) (int, error) {

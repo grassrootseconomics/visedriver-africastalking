@@ -13,14 +13,17 @@ import (
 
 	"git.defalsify.org/vise.git/engine"
 	"git.defalsify.org/vise.git/logging"
+	"git.defalsify.org/vise.git/lang"
 	"git.defalsify.org/vise.git/resource"
 
 	"git.grassecon.net/urdt/ussd/config"
 	"git.grassecon.net/urdt/ussd/initializers"
-	"git.grassecon.net/urdt/ussd/common"
 	"git.grassecon.net/urdt/ussd/remote"
+	"git.grassecon.net/urdt/ussd/common"
 	"git.grassecon.net/urdt/ussd/handlers"
+	
 	at "git.grassecon.net/grassrootseconomics/visedriver-africastalking/internal/africastalking"
+	"git.grassecon.net/grassrootseconomics/visedriver-africastalking/internal/args"
 )
 
 var (
@@ -45,6 +48,9 @@ func main() {
 	var host string
 	var port uint
 	var err error
+	var gettextDir string
+	var langs args.LangVar
+
 
 	flag.StringVar(&resourceDir, "resourcedir", path.Join("services", "registration"), "resource dir")
 	flag.StringVar(&connStr, "c", "", "connection string")
@@ -52,9 +58,11 @@ func main() {
 	flag.UintVar(&size, "s", 160, "max size of output")
 	flag.StringVar(&host, "h", initializers.GetEnv("HOST", "127.0.0.1"), "http host")
 	flag.UintVar(&port, "p", initializers.GetEnvUint("PORT", 7123), "http port")
+	flag.StringVar(&gettextDir, "gettext", "", "use gettext translations from given directory")
+	flag.Var(&langs, "language", "add symbol resolution for language")
 	flag.Parse()
 
-	if connStr != "" {
+	if connStr == "" {
 		connStr = config.DbConn
 	}
 	connData, err := common.ToConnData(config.DbConn)
@@ -67,6 +75,13 @@ func main() {
 
 	ctx := context.Background()
 	ctx = context.WithValue(ctx, "Database", database)
+	ln, err := lang.LanguageFromCode(config.DefaultLanguage)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "default language set error: %v", err)
+		os.Exit(1)
+	}
+	ctx = context.WithValue(ctx, "Language", ln)
+
 	pfp := path.Join(scriptDir, "pp.csv")
 
 	cfg := engine.Config{
@@ -130,9 +145,7 @@ func main() {
 	}
 	defer stateStore.Close()
 
-	rp := &at.ATRequestParser{
-		Context: ctx,
-	}
+	rp := &at.ATRequestParser{}
 	bsh := handlers.NewBaseSessionHandler(cfg, rs, stateStore, userdataStore, rp, hl)
 	sh := at.NewATSessionHandler(bsh)
 
