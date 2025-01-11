@@ -1,7 +1,7 @@
 git.defalsify.org/vise.git v0.2.3-0.20250103172917-3e190a44568d h1:bPAOVZOX4frSGhfOdcj7kc555f8dc9DmMd2YAyC2AMw=
 git.defalsify.org/vise.git v0.2.3-0.20250103172917-3e190a44568d/go.mod h1:jyBMe1qTYUz3mmuoC9JQ/TvFeW0vTanCUcPu3H8p4Ck=
-git.grassecon.net/grassrootseconomics/visedriver v0.8.0-beta.10.0.20250111083710-dff662663d5a h1:diTfcG3r+gGX/QxzlkMk3usWcS+Hcf9IdBaoLWzcMk0=
-git.grassecon.net/grassrootseconomics/visedriver v0.8.0-beta.10.0.20250111083710-dff662663d5a/go.mod h1:E6W7ZOa7ZvVr0Bc5ot0LNSwpSPYq4hXlAIvEPy3AJ7U=
+git.grassecon.net/grassrootseconomics/visedriver v0.8.0-beta.10.0.20250111163106-c93a07832daa h1:owrXxiDOp7uuyvGxi4DU8gu8PyA7YxVnX8bo7i28Anw=
+git.grassecon.net/grassrootseconomics/visedriver v0.8.0-beta.10.0.20250111163106-c93a07832daa/go.mod h1:E6W7ZOa7ZvVr0Bc5ot0LNSwpSPYq4hXlAIvEPy3AJ7U=
 github.com/alecthomas/assert/v2 v2.2.2 h1:Z/iVC0xZfWTaFNE6bA3z07T86hd45Xe2eLt6WVy2bbk=
 github.com/alecthomas/assert/v2 v2.2.2/go.mod h1:pXcQ2Asjp247dahGEmsZ6ru0UVwnkhktn7S0bBDLxvQ=
 github.com/alecthomas/repr v0.2.0 h1:HAzS41CIzNW5syS8Mf9UwXhNH1J9aix/BvDRf1Ml2Yk=

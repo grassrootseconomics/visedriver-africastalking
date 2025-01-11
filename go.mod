@@ -4,7 +4,7 @@ go 1.23.0
 
 require (
 	git.defalsify.org/vise.git v0.2.3-0.20250103172917-3e190a44568d
-	git.grassecon.net/grassrootseconomics/visedriver v0.8.0-beta.10.0.20250111083710-dff662663d5a
+	git.grassecon.net/grassrootseconomics/visedriver v0.8.0-beta.10.0.20250111163106-c93a07832daa
 )
 
 require (
