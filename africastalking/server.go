@@ -5,8 +5,8 @@ import (
 	"net/http"
 
 	"git.defalsify.org/vise.git/logging"
-	"git.grassecon.net/urdt/ussd/request"
-	"git.grassecon.net/urdt/ussd/errors"
+	"git.grassecon.net/grassrootseconomics/visedriver/request"
+	"git.grassecon.net/grassrootseconomics/visedriver/errors"
 )
 
 var (

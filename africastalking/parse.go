@@ -10,8 +10,8 @@ import (
 	"net/url"
 	"strings"
 
-	"git.grassecon.net/urdt/ussd/common"
-	"git.grassecon.net/urdt/ussd/errors"
+	"git.grassecon.net/grassrootseconomics/visedriver/common"
+	"git.grassecon.net/grassrootseconomics/visedriver/errors"
 )
 
 type ATRequestParser struct {
