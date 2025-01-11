@@ -3,6 +3,7 @@ package at
 import (
 	"io"
 	"net/http"
+	"strconv"
 
 	"git.defalsify.org/vise.git/logging"
 	"git.grassecon.net/grassrootseconomics/visedriver/request"
@@ -14,12 +15,13 @@ var (
 )
 
 type ATSessionHandler struct {
-	*request.SessionHandler
+	//*httpsession.SessionHandler
+	request.RequestHandler
 }
 
 func NewATSessionHandler(h request.RequestHandler) *ATSessionHandler {
 	return &ATSessionHandler{
-		SessionHandler: request.ToSessionHandler(h),
+		RequestHandler: h,
 	}
 }
 
@@ -95,4 +97,15 @@ func (ash *ATSessionHandler) Output(rqs request.RequestSession) (request.Request
 
 	_, err = rqs.Engine.Flush(rqs.Ctx, rqs.Writer)
 	return rqs, err
+}
+
+func (ash *ATSessionHandler) WriteError(w http.ResponseWriter, code int, err error) {
+	s := err.Error()
+	w.Header().Set("Content-Length", strconv.Itoa(len(s)))
+	w.WriteHeader(code)
+	_, err = w.Write([]byte(s))
+	if err != nil {
+		logg.Errorf("error writing error!!", "err", err, "olderr", s)
+		w.WriteHeader(500)
+	}
 }
