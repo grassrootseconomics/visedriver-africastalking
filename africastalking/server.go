@@ -14,18 +14,18 @@ var (
 	logg = logging.NewVanilla().WithDomain("atserver")
 )
 
-type ATSessionHandler struct {
-	//*httpsession.SessionHandler
+type ATRequestHandler struct {
+	//*httpsession.RequestHandler
 	request.RequestHandler
 }
 
-func NewATSessionHandler(h request.RequestHandler) *ATSessionHandler {
-	return &ATSessionHandler{
+func NewATRequestHandler(h request.RequestHandler) *ATRequestHandler {
+	return &ATRequestHandler{
 		RequestHandler: h,
 	}
 }
 
-func (ash *ATSessionHandler) ServeHTTP(w http.ResponseWriter, req *http.Request) {
+func (ash *ATRequestHandler) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	var code int
 	var err error
 
@@ -80,7 +80,7 @@ func (ash *ATSessionHandler) ServeHTTP(w http.ResponseWriter, req *http.Request)
 	}
 }
 
-func (ash *ATSessionHandler) Output(rqs request.RequestSession) (request.RequestSession, error) {
+func (ash *ATRequestHandler) Output(rqs request.RequestSession) (request.RequestSession, error) {
 	var err error
 	var prefix string
 
@@ -99,7 +99,7 @@ func (ash *ATSessionHandler) Output(rqs request.RequestSession) (request.Request
 	return rqs, err
 }
 
-func (ash *ATSessionHandler) WriteError(w http.ResponseWriter, code int, err error) {
+func (ash *ATRequestHandler) WriteError(w http.ResponseWriter, code int, err error) {
 	s := err.Error()
 	w.Header().Set("Content-Length", strconv.Itoa(len(s)))
 	w.WriteHeader(code)

@@ -16,20 +16,20 @@ import (
 	"git.grassecon.net/grassrootseconomics/visedriver/testutil/mocks/httpmocks"
 )
 
-//func TestNewATSessionHandler(t *testing.T) {
+//func TestNewATRequestHandler(t *testing.T) {
 //	mockHandler := &httpmocks.MockRequestHandler{}
-//	ash := NewATSessionHandler(mockHandler)
+//	ash := NewATRequestHandler(mockHandler)
 //
 //	if ash == nil {
-//		t.Fatal("NewATSessionHandler returned nil")
+//		t.Fatal("NewATRequestHandler returned nil")
 //	}
 //
 //	if ash.HTTPRequestHandler == nil {
-//		t.Fatal("SessionHandler is nil")
+//		t.Fatal("RequestHandler is nil")
 //	}
 //}
 
-func TestATSessionHandler_ServeHTTP(t *testing.T) {
+func TestATRequestHandler_ServeHTTP(t *testing.T) {
 	tests := []struct {
 		name           string
 		setupMocks     func(*httpmocks.MockRequestHandler, *httpmocks.MockRequestParser, *httpmocks.MockEngine)
@@ -137,7 +137,7 @@ func TestATSessionHandler_ServeHTTP(t *testing.T) {
 			mockEngine := &httpmocks.MockEngine{}
 			tt.setupMocks(mockHandler, mockRequestParser, mockEngine)
 
-			ash := NewATSessionHandler(mockHandler)
+			ash := NewATRequestHandler(mockHandler)
 
 			req := httptest.NewRequest(http.MethodPost, "/", strings.NewReader(tt.formData.Encode()))
 			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
@@ -156,7 +156,7 @@ func TestATSessionHandler_ServeHTTP(t *testing.T) {
 	}
 }
 
-func TestATSessionHandler_Output(t *testing.T) {
+func TestATRequestHandler_Output(t *testing.T) {
 	tests := []struct {
 		name           string
 		input          request.RequestSession
@@ -209,7 +209,7 @@ func TestATSessionHandler_Output(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			ash := &ATSessionHandler{}
+			ash := &ATRequestHandler{}
 			_, err := ash.Output(tt.input)
 
 			if tt.expectedError && err == nil {
