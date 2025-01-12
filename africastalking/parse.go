@@ -10,7 +10,7 @@ import (
 	"net/url"
 	"strings"
 
-	"git.grassecon.net/grassrootseconomics/visedriver/common"
+	"git.grassecon.net/grassrootseconomics/common/phone"
 	"git.grassecon.net/grassrootseconomics/visedriver/errors"
 )
 
@@ -58,7 +58,7 @@ func (arp *ATRequestParser) GetSessionId(ctx context.Context, rq any) (string, e
 		return "", fmt.Errorf("no phone number found")
 	}
 
-	formattedNumber, err := common.FormatPhoneNumber(phoneNumber)
+	formattedNumber, err := phone.FormatPhoneNumber(phoneNumber)
 	if err != nil {
 		logg.Warnf("failed to format phone number", "err", err)
 		return "", fmt.Errorf("failed to format number")
