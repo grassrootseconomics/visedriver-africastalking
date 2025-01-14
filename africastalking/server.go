@@ -11,7 +11,7 @@ import (
 )
 
 var (
-	logg = logging.NewVanilla().WithDomain("atserver")
+	logg = logging.NewVanilla().WithDomain("atserver").WithContextKey("at-session-id").WithContextKey("SessionId")
 )
 
 type ATRequestHandler struct {
