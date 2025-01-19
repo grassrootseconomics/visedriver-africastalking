@@ -1,9 +1,9 @@
-git.defalsify.org/vise.git v0.2.3-0.20250119102754-11da04233e73 h1:WOLAF8STyDxy/4qcOpmmHUinJQLm+Ze5riwcVrZRl3k=
-git.defalsify.org/vise.git v0.2.3-0.20250119102754-11da04233e73/go.mod h1:jyBMe1qTYUz3mmuoC9JQ/TvFeW0vTanCUcPu3H8p4Ck=
+git.defalsify.org/vise.git v0.2.3-0.20250119110446-6c29d5ba580a h1:LXg7l5g3jiNSKWCwjO2nmMyZcNYZzuNPyuxiFtfOE6U=
+git.defalsify.org/vise.git v0.2.3-0.20250119110446-6c29d5ba580a/go.mod h1:jyBMe1qTYUz3mmuoC9JQ/TvFeW0vTanCUcPu3H8p4Ck=
 git.grassecon.net/grassrootseconomics/common v0.0.0-20250113174703-6afccefd1f05 h1:BenzGx6aDHKDwE23/mWIFD2InYIXyzHroZWV3MF5WUk=
 git.grassecon.net/grassrootseconomics/common v0.0.0-20250113174703-6afccefd1f05/go.mod h1:wgQJZGIS6QuNLHqDhcsvehsbn5PvgV7aziRebMnJi60=
-git.grassecon.net/grassrootseconomics/visedriver v0.8.0-beta.10.0.20250119103841-b8a377befbc4 h1:2KXcr/tcjt4fe4E6cFz96jc1lnpYr9l4zi7A1Qk+fbE=
-git.grassecon.net/grassrootseconomics/visedriver v0.8.0-beta.10.0.20250119103841-b8a377befbc4/go.mod h1:BJBi9aW7MEybI9/w+JytMpLwgVCvS3TGpcb5QQXAlIw=
+git.grassecon.net/grassrootseconomics/visedriver v0.8.0-beta.10.0.20250119110807-c5bb1c80a55d h1:s3bxpfFSIMgEzFxRSsiCBUWzvddEkpc/5eD57xzDj/M=
+git.grassecon.net/grassrootseconomics/visedriver v0.8.0-beta.10.0.20250119110807-c5bb1c80a55d/go.mod h1:mGZ7IPJtQcqhdo+ahxs+pAVKUowTpQ+2kMxfJ3/j3q8=
 github.com/barbashov/iso639-3 v0.0.0-20211020172741-1f4ffb2d8d1c h1:H9Nm+I7Cg/YVPpEV1RzU3Wq2pjamPc/UtHDgItcb7lE=
 github.com/barbashov/iso639-3 v0.0.0-20211020172741-1f4ffb2d8d1c/go.mod h1:rGod7o6KPeJ+hyBpHfhi4v7blx9sf+QsHsA7KAsdN6U=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
