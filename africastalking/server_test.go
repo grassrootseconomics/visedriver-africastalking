@@ -58,7 +58,7 @@ func TestATRequestHandler_ServeHTTP(t *testing.T) {
 				mh.GetConfigFunc = func() engine.Config { return engine.Config{} }
 				mh.GetRequestParserFunc = func() request.RequestParser { return mrp }
 				mh.OutputFunc = func(rs request.RequestSession) (request.RequestSession, error) { return rs, nil }
-				mh.ResetFunc = func(rs request.RequestSession) (request.RequestSession, error) { return rs, nil }
+				mh.ResetFunc = func(ctx context.Context, rs request.RequestSession) (request.RequestSession, error) { return rs, nil }
 				me.FlushFunc = func(context.Context, io.Writer) (int, error) { return 0, nil }
 			},
 			formData: url.Values{

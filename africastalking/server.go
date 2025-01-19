@@ -73,7 +73,7 @@ func (ash *ATRequestHandler) ServeHTTP(w http.ResponseWriter, req *http.Request)
 		return
 	}
 
-	rqs, err = ash.Reset(rqs)
+	rqs, err = ash.Reset(rqs.Ctx, rqs)
 	if err != nil {
 		ash.WriteError(w, 500, err)
 		return
