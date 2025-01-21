@@ -3,9 +3,9 @@ module git.grassecon.net/grassrootseconomics/visedriver-africastalking
 go 1.23.4
 
 require (
-	git.defalsify.org/vise.git v0.2.3-0.20250119110446-6c29d5ba580a
-	git.grassecon.net/grassrootseconomics/common v0.0.0-20250113174703-6afccefd1f05
-	git.grassecon.net/grassrootseconomics/visedriver v0.8.0-beta.10.0.20250119110807-c5bb1c80a55d
+	git.defalsify.org/vise.git v0.2.3-0.20250120121301-10739fb4a8c9
+	git.grassecon.net/grassrootseconomics/common v0.0.0-20250121134736-ba8cbbccea7d
+	git.grassecon.net/grassrootseconomics/visedriver v0.8.0-beta.10.0.20250121134912-f7d31e4e8162
 )
 
 require (
