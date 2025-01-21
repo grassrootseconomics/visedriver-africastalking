@@ -6,8 +6,8 @@ import (
 	"strconv"
 
 	"git.defalsify.org/vise.git/logging"
-	"git.grassecon.net/grassrootseconomics/visedriver/request"
 	"git.grassecon.net/grassrootseconomics/visedriver/errors"
+	"git.grassecon.net/grassrootseconomics/visedriver/request"
 )
 
 var (
@@ -50,7 +50,7 @@ func (ash *ATRequestHandler) ServeHTTP(w http.ResponseWriter, req *http.Request)
 		return
 	}
 
-	rqs, err = ash.Process(rqs) 
+	rqs, err = ash.Process(rqs)
 	switch err {
 	case nil: // set code to 200 if no err
 		code = 200
