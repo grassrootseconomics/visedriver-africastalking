@@ -83,7 +83,8 @@ func (arp *ATRequestParser) GetInput(rq any) ([]byte, error) {
 		return nil, fmt.Errorf("no input found")
 	}
 
-	return []byte(parts[len(parts)-1]), nil
+	trimmedInput := strings.TrimSpace(parts[len(parts)-1])
+	return []byte(trimmedInput), nil
 }
 
 func parseQueryParams(query string) map[string]string {
