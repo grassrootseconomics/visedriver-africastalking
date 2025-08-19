@@ -5,13 +5,13 @@ import (
 	"net/http"
 	"strconv"
 
-	"git.defalsify.org/vise.git/logging"
 	"git.grassecon.net/grassrootseconomics/visedriver/errors"
 	"git.grassecon.net/grassrootseconomics/visedriver/request"
+	slogging "github.com/grassrootseconomics/go-vise/slog"
 )
 
 var (
-	logg = logging.NewVanilla().WithDomain("atserver").WithContextKey("at-session-id").WithContextKey("SessionId")
+	logg = slogging.Get().With("component", "atserver")
 )
 
 type ATRequestHandler struct {
