@@ -45,7 +45,7 @@ func (arp *ATRequestParser) GetSessionId(ctx context.Context, rq any) (string, e
 		if err != nil {
 			context.WithValue(arp.Context, "at-session-id", sessionId)
 		}
-		logg.Debugf("Received request:", decodedStr)
+		logg.Debugf("Received request:", "request body", decodedStr)
 	}
 
 	if err := rqv.ParseForm(); err != nil {
